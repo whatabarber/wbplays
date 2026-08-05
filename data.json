@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-04",
+  "updated": "2026-08-05",
   "analysis_date": "2026-08-04",
   "names": [
     {
@@ -9,131 +9,272 @@
       "price": "$771.33",
       "chg": "+2.7% \u00b7 1mo",
       "dir": "up",
-      "levels": [["Support", "$744"], ["Resistance", "$753"], ["Range", "99% of 52wk"]],
-      "ivNear": 0.12,
-      "ivFar": 0.135,
+      "levels": [
+        [
+          "Support",
+          "$744"
+        ],
+        [
+          "Resistance",
+          "$753"
+        ],
+        [
+          "Range",
+          "99% of 52wk"
+        ]
+      ],
+      "ivNear": 0.068,
+      "ivFar": 0.0,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Trend", "Sitting at 99% of its 52-week range \u2014 essentially at all-time highs. Strong trend, but very little cushion if it stalls."],
-          ["Trigger", "Chasing calls this close to the top of the range is late-stage; a pullback to $753-758 would be a cleaner entry than paying up here."],
-          ["Watch", "Old support/resistance levels ($744/$753) are stale now that price has run well past them \u2014 treat them as a floor to watch on any pullback, not a current ceiling."]
+          [
+            "Trend",
+            "Sitting at 99% of its 52-week range \u2014 essentially at all-time highs. Strong trend, but very little cushion if it stalls."
+          ],
+          [
+            "Trigger",
+            "Chasing calls this close to the top of the range is late-stage; a pullback to $753-758 would be a cleaner entry than paying up here."
+          ],
+          [
+            "Watch",
+            "Old support/resistance levels ($744/$753) are stale now that price has run well past them \u2014 treat them as a floor to watch on any pullback, not a current ceiling."
+          ]
         ]
       },
       "put": {
         "verdict": "skip",
         "vlabel": "Skip",
         "why": [
-          ["Trend", "Index is grinding to new highs \u2014 fading strength this strong is fighting a confirmed uptrend."],
-          ["Trigger", "Only reconsider on a real break back below the old $744 zone, not just a red day near the top."]
+          [
+            "Trend",
+            "Index is grinding to new highs \u2014 fading strength this strong is fighting a confirmed uptrend."
+          ],
+          [
+            "Trigger",
+            "Only reconsider on a real break back below the old $744 zone, not just a red day near the top."
+          ]
         ]
       }
     },
     {
       "sym": "TSLA",
       "co": "Tesla, Inc.",
-      "spot": 325.91,
-      "price": "$325.91",
-      "chg": "-9.4% \u00b7 1mo",
+      "spot": 327.35,
+      "price": "$327.35",
+      "chg": "-22.0% \u00b7 1mo",
       "dir": "down",
-      "levels": [["52wk Low", "$304"], ["Resistance", "$340"], ["Range", "13% of 52wk"]],
-      "ivNear": 0.46, "ivFar": 0.40,
+      "levels": [
+        [
+          "52wk Low",
+          "$304"
+        ],
+        [
+          "Resistance",
+          "$340"
+        ],
+        [
+          "Range",
+          "15% of 52wk"
+        ]
+      ],
+      "ivNear": 0.004,
+      "ivFar": 0.001,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Catalyst", "Stock cratered to a fresh multi-month low near $304 after the Q2 miss (EPS miss despite a revenue beat, negative free cash flow), then clawed back to the $320s-330s over the past week."],
-          ["Trend", "This is a stabilization bounce, not a confirmed reversal \u2014 still down hard over the past month. A close back above $340 resistance would strengthen the case."],
-          ["Trigger", "Wait for that $340 reclaim before paying for calls; buying into an unconfirmed bounce is a coin flip."]
+          [
+            "Catalyst",
+            "Stock cratered to a fresh multi-month low near $304 after the Q2 miss (EPS miss despite a revenue beat, negative free cash flow), then clawed back to the $320s-330s over the past week."
+          ],
+          [
+            "Trend",
+            "This is a stabilization bounce, not a confirmed reversal \u2014 still down hard over the past month. A close back above $340 resistance would strengthen the case."
+          ],
+          [
+            "Trigger",
+            "Wait for that $340 reclaim before paying for calls; buying into an unconfirmed bounce is a coin flip."
+          ]
         ]
       },
       "put": {
         "verdict": "skip",
         "vlabel": "Skip",
         "why": [
-          ["Momentum", "The big down-move already happened \u2014 shares are 9%+ off recent lows now. Chasing more short here is late, not early."],
-          ["Trigger", "Only worth revisiting on a fresh break of the $304 low, not on residual bearishness from two weeks ago."]
+          [
+            "Momentum",
+            "The big down-move already happened \u2014 shares are 9%+ off recent lows now. Chasing more short here is late, not early."
+          ],
+          [
+            "Trigger",
+            "Only worth revisiting on a fresh break of the $304 low, not on residual bearishness from two weeks ago."
+          ]
         ]
       }
     },
     {
       "sym": "PLTR",
       "co": "Palantir Technologies",
-      "spot": 140.00,
-      "price": "$140.00",
-      "chg": "+12.8% \u00b7 1mo",
+      "spot": 162.66,
+      "price": "$162.66",
+      "chg": "+22.7% \u00b7 1mo",
       "dir": "up",
-      "levels": [["Support", "$128"], ["Prior high", "$144"], ["Range", "72% of 52wk"]],
-      "ivNear": 0.55, "ivFar": 0.48,
+      "levels": [
+        [
+          "Support",
+          "$128"
+        ],
+        [
+          "Prior high",
+          "$144"
+        ],
+        [
+          "Range",
+          "56% of 52wk"
+        ]
+      ],
+      "ivNear": 0.0,
+      "ivFar": 0.016,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Catalyst", "Q2 earnings (Aug 3) beat big \u2014 EPS $0.41 vs $0.33 est., revenue growth ~94% YoY, US commercial revenue +149% YoY \u2014 and the stock popped ~15% on it."],
-          ["Momentum", "That's a large, fast move already in the books. Buying calls right after a 15% earnings gap is chasing, with valuation concerns (elevated price-to-sales) still in the background."],
-          ["Trigger", "A pullback and higher-low around $128-132 would be a healthier entry than paying up here."]
+          [
+            "Catalyst",
+            "Q2 earnings (Aug 3) beat big \u2014 EPS $0.41 vs $0.33 est., revenue growth ~94% YoY, US commercial revenue +149% YoY \u2014 and the stock popped ~15% on it."
+          ],
+          [
+            "Momentum",
+            "That's a large, fast move already in the books. Buying calls right after a 15% earnings gap is chasing, with valuation concerns (elevated price-to-sales) still in the background."
+          ],
+          [
+            "Trigger",
+            "A pullback and higher-low around $128-132 would be a healthier entry than paying up here."
+          ]
         ]
       },
       "put": {
         "verdict": "skip",
         "vlabel": "Skip",
         "why": [
-          ["Catalyst", "The earnings beat was unambiguous and the market rewarded it hard \u2014 fading fresh bullish momentum the day after a blowout quarter is a bad risk/reward."],
-          ["Trigger", "Only worth a look if it gives back the entire earnings gap and breaks back below $128."]
+          [
+            "Catalyst",
+            "The earnings beat was unambiguous and the market rewarded it hard \u2014 fading fresh bullish momentum the day after a blowout quarter is a bad risk/reward."
+          ],
+          [
+            "Trigger",
+            "Only worth a look if it gives back the entire earnings gap and breaks back below $128."
+          ]
         ]
       }
     },
     {
       "sym": "AAPL",
       "co": "Apple Inc.",
-      "spot": 325.89,
-      "price": "$325.89",
-      "chg": "-1.2% \u00b7 1mo",
+      "spot": 309.38,
+      "price": "$309.38",
+      "chg": "-1.0% \u00b7 1mo",
       "dir": "down",
-      "levels": [["Support", "$320"], ["Resistance", "$332"], ["Range", "58% of 52wk"]],
-      "ivNear": 0.26, "ivFar": 0.24,
+      "levels": [
+        [
+          "Support",
+          "$320"
+        ],
+        [
+          "Resistance",
+          "$332"
+        ],
+        [
+          "Range",
+          "75% of 52wk"
+        ]
+      ],
+      "ivNear": 0.016,
+      "ivFar": 0.004,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Trend", "Still drifting in the same tight range \u2014 no breakout trigger yet, and no fresh catalyst since the last update."],
-          ["Trigger", "A reclaim of $328-332 on volume would flip this to an actual lean."]
+          [
+            "Trend",
+            "Still drifting in the same tight range \u2014 no breakout trigger yet, and no fresh catalyst since the last update."
+          ],
+          [
+            "Trigger",
+            "A reclaim of $328-332 on volume would flip this to an actual lean."
+          ]
         ]
       },
       "put": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Trend", "Mild pullback, but $320 support is still holding \u2014 no confirmed breakdown."],
-          ["Trigger", "Only worth a put if $320 gives way cleanly, not on a single red day."]
+          [
+            "Trend",
+            "Mild pullback, but $320 support is still holding \u2014 no confirmed breakdown."
+          ],
+          [
+            "Trigger",
+            "Only worth a put if $320 gives way cleanly, not on a single red day."
+          ]
         ]
       }
     },
     {
       "sym": "META",
       "co": "Meta Platforms, Inc.",
-      "spot": 600.00,
-      "price": "$600.00",
-      "chg": "-7.1% \u00b7 1mo",
+      "spot": 587.94,
+      "price": "$587.94",
+      "chg": "-2.1% \u00b7 1mo",
       "dir": "down",
-      "levels": [["Support", "$590"], ["Prior high", "$653"], ["Range", "38% of 52wk"]],
-      "ivNear": 0.34, "ivFar": 0.29,
+      "levels": [
+        [
+          "Support",
+          "$590"
+        ],
+        [
+          "Prior high",
+          "$653"
+        ],
+        [
+          "Range",
+          "25% of 52wk"
+        ]
+      ],
+      "ivNear": 0.52,
+      "ivFar": 0.469,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Catalyst", "Q2 earnings (Jul 29) missed on free cash flow as capex guidance ballooned to $125-145B for AI infrastructure \u2014 shares fell as much as 10% intraday, closing down ~7%."],
-          ["Trend", "No confirmed bounce yet since the drop. Calls here are betting on a reversal that hasn't shown up in price action."],
-          ["Trigger", "Wait for a reclaim of $620+ before treating this as a call setup."]
+          [
+            "Catalyst",
+            "Q2 earnings (Jul 29) missed on free cash flow as capex guidance ballooned to $125-145B for AI infrastructure \u2014 shares fell as much as 10% intraday, closing down ~7%."
+          ],
+          [
+            "Trend",
+            "No confirmed bounce yet since the drop. Calls here are betting on a reversal that hasn't shown up in price action."
+          ],
+          [
+            "Trigger",
+            "Wait for a reclaim of $620+ before treating this as a call setup."
+          ]
         ]
       },
       "put": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Catalyst", "The earnings-driven drop already happened over a week ago \u2014 chasing more downside this late risks a bounce, especially if capex concerns get reframed as AI investment strength."],
-          ["Trigger", "Only worth a fresh put on a confirmed break of $590 support, not on stale earnings-miss momentum."]
+          [
+            "Catalyst",
+            "The earnings-driven drop already happened over a week ago \u2014 chasing more downside this late risks a bounce, especially if capex concerns get reframed as AI investment strength."
+          ],
+          [
+            "Trigger",
+            "Only worth a fresh put on a confirmed break of $590 support, not on stale earnings-miss momentum."
+          ]
         ]
       }
     }
