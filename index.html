@@ -123,7 +123,7 @@
   <header>
     <div class="kicker">Whatabarber · $300 per trade</div>
     <h1>Whatabarber <em>Plays</em></h1>
-    <div class="asof"><span class="dot-live"></span><span id="asof">loading…</span></div>
+    <div class="asof"><span class="dot-live"></span><span id="asof">loading…</span><span style="color:var(--line);margin:0 2px">·</span><span id="clock" style="font-variant-numeric:tabular-nums"></span></div>
     <div style="margin-top:4px"><span id="andate" style="font-size:11.5px;color:var(--ink-soft)"></span></div>
     <div class="err" id="err">Couldn't load data.json — refresh, or check that the file is next to this page.</div>
   </header>
@@ -166,8 +166,8 @@ let MONTHLY=FRIS[0];for(const f of FRIS){if(Math.abs(dteOf(f)-30)<Math.abs(dteOf
 const BUDGET=300, FIT_CAP=315; // ~$300/trade watchlist
 
 const READS={
-  call:["This week · calls","<b>Two names worth a look, three worth waiting on.</b> TSLA just got hit on the Q2 miss — not a call. PLTR is down hard into its Aug 3 earnings — too fresh to chase up. SPY and AAPL are grinding, not breaking out yet. META's earnings land July 29, so premium is pricier than it looks — size small if you touch it at all."],
-  put:["This week · puts","<b>TSLA is the cleanest short lean</b> after the earnings miss and margin pressure — wait for a clean break of support before sizing in. PLTR already dropped hard, so chasing more downside is a knife-catch risk. SPY's uptrend is still intact, don't fight it. AAPL's flat, no edge either way. META carries earnings-binary risk into July 29 — track only, don't press it."]
+  call:["This week · calls","<b>Both earnings events are behind us now, and the dust hasn't fully settled.</b> PLTR ripped ~15% on a big Aug 3 beat — impressive, but chasing a gap that large is late, not early. TSLA has clawed back off its post-earnings lows but isn't breaking out yet. META is still digesting a rough July 29 miss on free cash flow — no reversal confirmed. SPY and AAPL are the steadier names here, with SPY sitting near the top of its 52-week range."],
+  put:["This week · puts","<b>The easy directional trades already happened.</b> META's post-earnings slide is a week old — chasing more downside this late risks a dead-cat bounce. PLTR just had a huge beat, so fading it now is fighting fresh bullish momentum. TSLA's slide has stalled and stabilized — late to short it. SPY's uptrend remains intact near 52-week highs, don't fight it. AAPL's the only true coin-flip name right now."]
 };
 
 let DIR='call', NAMES=[];
@@ -224,7 +224,9 @@ function build(){
         <span class="q"><span class="ic">↗</span> Live chart</span>
         <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <div class="chart-body"><div class="chart-inner"><div class="tv" id="tv-${d.sym}"></div></div></div>`;
+      <div class="chart-body"><div class="chart-inner"><div class="tv" id="tv-${d.sym}"></div>
+        <div style="margin-top:8px;text-align:right"><a href="https://www.tradingview.com/chart/?symbol=${encodeURIComponent(TV[d.sym]||d.sym)}" target="_blank" style="font-size:11.5px;color:var(--gold);text-decoration:none">Open on TradingView.com — use my saved indicators ↗</a></div>
+      </div></div>`;
     cards.appendChild(c);
 
     const kEl=c.querySelector('.in-k'),eEl=c.querySelector('.in-e'),pEl=c.querySelector('.in-p'),res=c.querySelector('.result');
@@ -289,6 +291,17 @@ function setDir(dir){
   build();
 }
 document.querySelectorAll('#toggle button').forEach(b=>b.addEventListener('click',()=>setDir(b.dataset.dir)));
+
+function tickClock(){
+  const el=document.getElementById('clock');
+  if(!el) return;
+  const now=new Date();
+  const tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const tzShort=now.toLocaleTimeString('en-US',{timeZoneName:'short'}).split(' ').pop();
+  el.textContent=now.toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit'})+' '+tzShort;
+}
+tickClock();
+setInterval(tickClock,1000);
 
 fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error('bad status'); return r.json(); }).then(p=>{
   document.getElementById('asof').textContent='as of '+fmtD(p.updated)+' · daily auto-refresh';
