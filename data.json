@@ -5,9 +5,9 @@
     {
       "sym": "SPY",
       "co": "S&P 500 ETF",
-      "spot": 771.33,
-      "price": "$771.33",
-      "chg": "+2.7% \u00b7 1mo",
+      "spot": 772.78,
+      "price": "$772.78",
+      "chg": "+3.4% \u00b7 1mo",
       "dir": "up",
       "levels": [
         [
@@ -20,11 +20,11 @@
         ],
         [
           "Range",
-          "99% of 52wk"
+          "97% of 52wk"
         ]
       ],
-      "ivNear": 0.068,
-      "ivFar": 0.0,
+      "ivNear": 0.171,
+      "ivFar": 0.143,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
@@ -61,9 +61,9 @@
     {
       "sym": "TSLA",
       "co": "Tesla, Inc.",
-      "spot": 327.35,
-      "price": "$327.35",
-      "chg": "-22.0% \u00b7 1mo",
+      "spot": 322.52,
+      "price": "$322.52",
+      "chg": "-19.9% \u00b7 1mo",
       "dir": "down",
       "levels": [
         [
@@ -76,11 +76,11 @@
         ],
         [
           "Range",
-          "15% of 52wk"
+          "12% of 52wk"
         ]
       ],
-      "ivNear": 0.004,
-      "ivFar": 0.001,
+      "ivNear": 0.481,
+      "ivFar": 0.472,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
@@ -117,9 +117,9 @@
     {
       "sym": "PLTR",
       "co": "Palantir Technologies",
-      "spot": 162.66,
-      "price": "$162.66",
-      "chg": "+22.7% \u00b7 1mo",
+      "spot": 160.67,
+      "price": "$160.67",
+      "chg": "+19.6% \u00b7 1mo",
       "dir": "up",
       "levels": [
         [
@@ -132,11 +132,11 @@
         ],
         [
           "Range",
-          "56% of 52wk"
+          "54% of 52wk"
         ]
       ],
-      "ivNear": 0.0,
-      "ivFar": 0.016,
+      "ivNear": 0.708,
+      "ivFar": 0.553,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
@@ -173,10 +173,10 @@
     {
       "sym": "AAPL",
       "co": "Apple Inc.",
-      "spot": 309.38,
-      "price": "$309.38",
-      "chg": "-1.0% \u00b7 1mo",
-      "dir": "down",
+      "spot": 310.97,
+      "price": "$310.97",
+      "chg": "+0.1% \u00b7 1mo",
+      "dir": "up",
       "levels": [
         [
           "Support",
@@ -188,11 +188,11 @@
         ],
         [
           "Range",
-          "75% of 52wk"
+          "77% of 52wk"
         ]
       ],
-      "ivNear": 0.016,
-      "ivFar": 0.004,
+      "ivNear": 0.0,
+      "ivFar": 0.172,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
@@ -225,9 +225,9 @@
     {
       "sym": "META",
       "co": "Meta Platforms, Inc.",
-      "spot": 587.94,
-      "price": "$587.94",
-      "chg": "-2.1% \u00b7 1mo",
+      "spot": 591.03,
+      "price": "$591.03",
+      "chg": "-4.0% \u00b7 1mo",
       "dir": "down",
       "levels": [
         [
@@ -240,11 +240,11 @@
         ],
         [
           "Range",
-          "25% of 52wk"
+          "26% of 52wk"
         ]
       ],
-      "ivNear": 0.52,
-      "ivFar": 0.469,
+      "ivNear": 0.296,
+      "ivFar": 0.452,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
