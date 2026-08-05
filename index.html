@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0D0C0A">
+<title>Whatabarber Plays · $300/trade</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#0D0C0A; --paper-2:#17140F; --ink:#F3EFE7; --ink-soft:#9C9488;
+    --line:#2B2721; --card:#17140F; --gold:#D4AF6B;
+    --go:#5FAE75; --go-bg:#152219; --go-line:#2C4536;
+    --wait:#E3B24C; --wait-bg:#2A2210; --wait-line:#4A3C18;
+    --skip:#E2735C; --skip-bg:#2A1712; --skip-line:#4A2A20;
+    --mute:#9C9488; --mute-bg:#1D1A15;
+    --shadow:0 1px 2px rgba(0,0,0,.5),0 10px 28px -14px rgba(0,0,0,.75);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%}
+  body{font-family:'Hanken Grotesk',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+    line-height:1.45;letter-spacing:-.01em;min-height:100vh;
+    padding:env(safe-area-inset-top) 0 calc(env(safe-area-inset-bottom) + 40px);
+    background-image:radial-gradient(120% 60% at 50% -10%, #1B1712 0%, var(--paper) 60%);}
+  .wrap{max-width:540px;margin:0 auto;padding:0 18px}
+  header{padding:34px 0 8px}
+  .kicker{font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:40px;line-height:1.02;letter-spacing:-.02em;margin:6px 0 0;color:var(--ink)}
+  h1 em{font-style:italic;color:var(--gold)}
+  .asof{display:flex;align-items:center;gap:8px;margin-top:12px;font-size:12.5px;color:var(--ink-soft)}
+  .dot-live{width:7px;height:7px;border-radius:50%;background:var(--go);animation:pulse 2.4s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(95,174,117,.45)}70%{box-shadow:0 0 0 7px rgba(95,174,117,0)}100%{box-shadow:0 0 0 0 rgba(95,174,117,0)}}
+
+  .toggle{display:flex;background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:4px;margin:20px 0 4px;position:relative}
+  .toggle button{flex:1;border:none;background:none;font:inherit;font-weight:600;font-size:14px;color:var(--ink-soft);padding:10px;border-radius:10px;cursor:pointer;z-index:1;transition:color .25s;display:flex;align-items:center;justify-content:center;gap:6px}
+  .toggle button.on{color:var(--ink)}
+  .toggle .slider{position:absolute;top:4px;left:4px;width:calc(50% - 4px);height:calc(100% - 8px);background:#262119;border-radius:10px;box-shadow:var(--shadow);transition:transform .3s cubic-bezier(.4,.0,.2,1)}
+  .toggle.puts .slider{transform:translateX(100%)}
+
+  .read{margin:12px 0 6px;padding:16px 18px;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;position:relative;overflow:hidden}
+  .read::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--wait)}
+  .read .lab{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--wait)}
+  .read p{font-size:14.5px;margin-top:5px;color:var(--ink)}.read b{font-weight:600}
+  .legend{display:flex;gap:14px;flex-wrap:wrap;margin:16px 2px 4px;font-size:11.5px;color:var(--ink-soft)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .pip{width:9px;height:9px;border-radius:50%}
+  .pip.go{background:var(--go)}.pip.wait{background:var(--wait)}.pip.skip{background:var(--skip)}.pip.mute{background:var(--mute)}
+  .section-label{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);margin:26px 4px 12px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);margin-bottom:16px;overflow:hidden;animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  .top{padding:18px 18px 14px;display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+  .tk{display:flex;flex-direction:column}
+  .tk .sym{font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1;color:var(--ink)}
+  .tk .co{font-size:12px;color:var(--ink-soft);margin-top:4px}
+  .px{text-align:right;white-space:nowrap}
+  .px .now{font-size:20px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .px .chg{font-size:12.5px;font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px}
+  .chg.up{color:var(--go)}.chg.down{color:var(--skip)}
+  .verdict{display:inline-flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+  .verdict .pip{width:7px;height:7px}
+  .v-go{background:var(--go-bg);color:var(--go);border:1px solid var(--go-line)}
+  .v-wait{background:var(--wait-bg);color:var(--wait);border:1px solid var(--wait-line)}
+  .v-skip{background:var(--skip-bg);color:var(--skip);border:1px solid var(--skip-line)}
+  .v-mute{background:var(--mute-bg);color:var(--mute);border:1px solid var(--line)}
+  .levels{display:flex;padding:0 18px 14px;font-size:12px}
+  .levels .lv{flex:1;border-left:2px solid var(--line);padding-left:10px}
+  .levels .lv:first-child{border-left:none;padding-left:0}
+  .levels .lv .k{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .levels .lv .vv{font-weight:600;font-variant-numeric:tabular-nums;margin-top:2px;color:var(--ink)}
+  .contracts{border-top:1px solid var(--line);background:linear-gradient(180deg,#1B1712,transparent 60%)}
+  .ct{display:flex;align-items:center;gap:12px;padding:13px 18px;border-bottom:1px solid var(--line)}
+  .ct .pip{flex:none}.ct .meta{flex:1;min-width:0}
+  .ct .play{font-weight:600;font-size:14px;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .ct .sub{font-size:11.5px;color:var(--ink-soft);margin-top:1px}
+  .ct .fit{font-size:11px;font-weight:600;padding:3px 8px;border-radius:7px;white-space:nowrap}
+  .fit.ok{background:var(--go-bg);color:var(--go)}.fit.no{background:var(--skip-bg);color:var(--skip)}.fit.na{background:var(--mute-bg);color:var(--mute)}
+  .analyzer{border-top:1px solid var(--line);padding:15px 18px 17px;background:var(--paper-2)}
+  .analyzer .h{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:11px;display:flex;align-items:center;gap:7px}
+  .analyzer .h .spark{font-family:'Fraunces',serif;font-style:italic;text-transform:none;letter-spacing:0;color:var(--ink-soft);font-weight:400;font-size:12px}
+  .inrow{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:8px}
+  .field{display:flex;flex-direction:column;gap:4px}
+  .field label{font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);font-weight:600}
+  .field input,.field select{font-family:inherit;font-size:15px;font-weight:600;font-variant-numeric:tabular-nums;padding:9px 10px;border:1.5px solid var(--line);border-radius:11px;background:#0F0D0A;color:var(--ink);width:100%;-webkit-appearance:none;appearance:none}
+  .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' stroke='%239C9488' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 9px center;padding-right:26px}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(212,175,107,.18)}
+  .prem-wrap{position:relative}.prem-wrap::before{content:"$";position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--ink-soft);font-weight:600;font-size:15px;pointer-events:none}
+  .prem-wrap input{padding-left:21px}
+  .result{margin-top:13px;border-radius:13px;padding:13px 14px;border:1px solid var(--line);background:#0F0D0A;display:none}
+  .result.show{display:block;animation:rise .35s ease both}
+  .result .stats{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;margin-bottom:9px}
+  .result .stats .s b{display:block;font-size:15px;font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .result .stats .s span{font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft)}
+  .result .vline{display:flex;align-items:flex-start;gap:9px;font-size:13.5px;line-height:1.45;padding-top:10px;border-top:1px solid var(--line)}
+  .result .vline .vp{flex:none;margin-top:4px}.result .vline b{font-weight:600}
+  .why-btn{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;font:inherit;padding:13px 18px;border-top:1px dashed var(--line)}
+  .why-btn .q{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--ink)}
+  .why-btn .qmk{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--gold);color:var(--gold);font-size:11px;font-weight:700;display:grid;place-items:center;font-family:'Fraunces',serif}
+  .chev{transition:transform .35s cubic-bezier(.2,.7,.2,1);color:var(--ink-soft)}
+  .why-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .why-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.7,.2,1)}
+  .why-inner{padding:2px 18px 18px;font-size:13.5px;line-height:1.55;color:var(--ink)}
+  .why-inner .tag{font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);display:block;margin:12px 0 3px}
+  .why-inner .tag:first-child{margin-top:2px}.why-inner b{font-weight:600}
+  footer{margin-top:30px;padding:20px 6px;border-top:1px solid var(--line);font-size:11px;color:var(--ink-soft);line-height:1.6}
+  footer b{color:var(--ink)}
+  .chart-btn{display:flex;align-items:center;justify-content:space-between;width:100%;background:none;border:none;cursor:pointer;font:inherit;padding:13px 18px;border-top:1px dashed var(--line)}
+  .chart-btn .q{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--ink)}
+  .chart-btn .ic{width:18px;height:18px;border-radius:50%;border:1.5px solid var(--go);color:var(--go);font-size:11px;font-weight:700;display:grid;place-items:center}
+  .chart-btn[aria-expanded="true"] .chev{transform:rotate(180deg)}
+  .chart-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.2,.7,.2,1)}
+  .chart-body.open{max-height:420px}
+  .chart-inner{padding:2px 12px 16px}
+  .tv{height:340px;border-radius:12px;overflow:hidden;border:1px solid var(--line)}
+  .err{margin:14px 2px;padding:14px 16px;border-radius:14px;background:var(--skip-bg);border:1px solid var(--skip-line);color:var(--skip);font-size:13px;display:none}
+  .err.show{display:block}
+</style>
+<script src="https://s3.tradingview.com/tv.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker">Whatabarber · $300 per trade</div>
+    <h1>Whatabarber <em>Plays</em></h1>
+    <div class="asof"><span class="dot-live"></span><span id="asof">loading…</span></div>
+    <div style="margin-top:4px"><span id="andate" style="font-size:11.5px;color:var(--ink-soft)"></span></div>
+    <div class="err" id="err">Couldn't load data.json — refresh, or check that the file is next to this page.</div>
+  </header>
+
+  <div class="toggle" id="toggle">
+    <div class="slider"></div>
+    <button data-dir="call" class="on">▲ Calls <span style="font-weight:400;color:var(--ink-soft)">· up</span></button>
+    <button data-dir="put">▼ Puts <span style="font-weight:400;color:var(--ink-soft)">· down</span></button>
+  </div>
+
+  <div class="read"><span class="lab" id="readlab">This week</span><p id="readtxt"></p></div>
+
+  <div class="legend">
+    <span><i class="pip go"></i> Looks solid</span><span><i class="pip wait"></i> Wait / watch</span>
+    <span><i class="pip skip"></i> Skip</span><span><i class="pip mute"></i> Track only</span>
+  </div>
+
+  <div class="section-label" id="seclabel">Your 5 names</div>
+  <div id="cards"></div>
+
+  <footer><b>Heads up:</b> not financial advice — a research aid for your own calls. Prices + implied vol auto-refresh daily via GitHub Actions (see data.json's "updated" date above); the verdicts + "why" text carries its own "analysis refreshed" date and is written by hand, not auto-generated. The analyzer estimates fair value with Black–Scholes anchored to each name's implied vol — a guide, not gospel. <b>Calls bet up, puts bet down — same discipline both ways. Size around $300 a trade, not more.</b></footer>
+</div>
+
+<script>
+// ---- Black-Scholes ----
+function erf(x){const t=1/(1+0.3275911*Math.abs(x));const y=1-(((((1.061405429*t-1.453152027)*t)+1.421413741)*t-0.284496736)*t+0.254829592)*t*Math.exp(-x*x);return x>=0?y:-y;}
+const ncdf=x=>0.5*(1+erf(x/Math.SQRT2));
+function bsCall(S,K,T,iv,r=0.04){if(T<=0||iv<=0)return Math.max(0,S-K);const v=iv*Math.sqrt(T);const d1=(Math.log(S/K)+(r+0.5*iv*iv)*T)/v;return S*ncdf(d1)-K*Math.exp(-r*T)*ncdf(d1-v);}
+function bsPut(S,K,T,iv,r=0.04){if(T<=0||iv<=0)return Math.max(0,K-S);return bsCall(S,K,T,iv,r)-S+K*Math.exp(-r*T);}
+function bsPrice(dir,S,K,T,iv){return dir==='put'?bsPut(S,K,T,iv):bsCall(S,K,T,iv);}
+
+// ---- upcoming Friday expiries, computed fresh each visit ----
+function fridays(count){const out=[];const d=new Date();d.setHours(12,0,0,0);while(out.length<count){d.setDate(d.getDate()+1);if(d.getDay()===5)out.push(new Date(d));}return out;}
+function dteOf(dt){const n=new Date();n.setHours(12,0,0,0);return Math.max(1,Math.round((dt-n)/86400000));}
+function md(dt){return dt.toLocaleDateString('en-US',{month:'short',day:'numeric'});}
+const FRIS=fridays(7);
+const SHORT=FRIS[0];
+let MONTHLY=FRIS[0];for(const f of FRIS){if(Math.abs(dteOf(f)-30)<Math.abs(dteOf(MONTHLY)-30))MONTHLY=f;}
+
+const BUDGET=300, FIT_CAP=315; // ~$300/trade watchlist
+
+const READS={
+  call:["This week · calls","<b>Two names worth a look, three worth waiting on.</b> TSLA just got hit on the Q2 miss — not a call. PLTR is down hard into its Aug 3 earnings — too fresh to chase up. SPY and AAPL are grinding, not breaking out yet. META's earnings land July 29, so premium is pricier than it looks — size small if you touch it at all."],
+  put:["This week · puts","<b>TSLA is the cleanest short lean</b> after the earnings miss and margin pressure — wait for a clean break of support before sizing in. PLTR already dropped hard, so chasing more downside is a knife-catch risk. SPY's uptrend is still intact, don't fight it. AAPL's flat, no edge either way. META carries earnings-binary risk into July 29 — track only, don't press it."]
+};
+
+let DIR='call', NAMES=[];
+const TV={SPY:'AMEX:SPY',TSLA:'NASDAQ:TSLA',AAPL:'NASDAQ:AAPL',PLTR:'NASDAQ:PLTR',META:'NASDAQ:META'};
+const cards=document.getElementById('cards');
+const fmtD=s=>{try{return new Date(s+'T12:00:00').toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'});}catch(e){return s;}};
+
+function ivFor(d,dte){return dte<=20?d.ivNear:d.ivFar;}
+function contractsFor(d){
+  const K=Math.max(0.5,Math.round(d.spot));
+  return [SHORT,MONTHLY].map((f,idx)=>{
+    const dte=dteOf(f), iv=ivFor(d,dte), prem=bsPrice(DIR,d.spot,K,dte/365,iv), cost=prem*100;
+    return {K,dte,label:md(f)+(idx?' · ~1mo':' · this Fri'),prem,cost,
+      fit: cost<=FIT_CAP?'ok':'no', fitTxt: cost<=FIT_CAP?'fits $300':'$'+cost.toFixed(0),
+      r: d[DIR].verdict};
+  });
+}
+
+function build(){
+  cards.innerHTML='';
+  NAMES.forEach((d,i)=>{
+    const dd=d[DIR];
+    const cts=contractsFor(d);
+    const c=document.createElement('div');c.className='card';c.style.animationDelay=(i*55)+'ms';
+    c.innerHTML=`
+      <div class="top">
+        <div class="tk"><span class="sym">${d.sym}</span><span class="co">${d.co}</span></div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+          <div class="px"><div class="now">${d.price}</div><div class="chg ${d.dir}">${d.chg}</div></div>
+          <span class="verdict v-${dd.verdict}"><i class="pip ${dd.verdict==='mute'?'mute':dd.verdict}"></i>${dd.vlabel}</span>
+        </div>
+      </div>
+      <div class="levels">${d.levels.map(l=>`<div class="lv"><div class="k">${l[0]}</div><div class="vv">${l[1]}</div></div>`).join('')}</div>
+      <div class="contracts">${cts.map(ct=>`
+        <div class="ct"><i class="pip ${ct.r}"></i>
+          <div class="meta"><div class="play">$${ct.K} ${DIR} · ${ct.label}</div><div class="sub">~$${ct.prem.toFixed(2)} · ATM · ${ct.dte}d</div></div>
+          <span class="fit ${ct.fit}">${ct.fitTxt}</span></div>`).join('')}
+      </div>
+      <div class="analyzer">
+        <div class="h">Try a ${DIR} price <span class="spark">— is it worth it?</span></div>
+        <div class="inrow">
+          <div class="field"><label>Strike</label><input type="number" inputmode="decimal" class="in-k" value="${Math.max(0.5,Math.round(d.spot))}" step="0.5"></div>
+          <div class="field"><label>Expiry</label><select class="in-e">${FRIS.map(f=>`<option value="${dteOf(f)}">${md(f)} (${dteOf(f)}d)</option>`).join('')}</select></div>
+          <div class="field"><label>Premium</label><div class="prem-wrap"><input type="number" inputmode="decimal" class="in-p" placeholder="0.50" step="0.01"></div></div>
+        </div>
+        <div class="result"></div>
+      </div>
+      <button class="why-btn" aria-expanded="false">
+        <span class="q"><span class="qmk">?</span> Why this ${DIR} rating</span>
+        <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="why-body"><div class="why-inner">${dd.why.map(w=>`<span class="tag">${w[0]}</span>${w[1]}`).join('')}</div></div>
+      <button class="chart-btn" aria-expanded="false" data-sym="${d.sym}">
+        <span class="q"><span class="ic">↗</span> Live chart</span>
+        <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="chart-body"><div class="chart-inner"><div class="tv" id="tv-${d.sym}"></div></div></div>`;
+    cards.appendChild(c);
+
+    const kEl=c.querySelector('.in-k'),eEl=c.querySelector('.in-e'),pEl=c.querySelector('.in-p'),res=c.querySelector('.result');
+    function analyze(){
+      const K=parseFloat(kEl.value),dte=parseFloat(eEl.value),P=parseFloat(pEl.value);
+      if(!(K>0)||!(P>0)){res.classList.remove('show');return;}
+      const iv=ivFor(d,dte), fair=bsPrice(DIR,d.spot,K,dte/365,iv), risk=P*100, ratio=P/Math.max(fair,0.01);
+      const be = DIR==='call'? K+P : K-P;
+      const movePct = DIR==='call'? (be-d.spot)/d.spot*100 : (d.spot-be)/d.spot*100;
+      const dirWord = DIR==='call'?'up':'down';
+      let priceWord = ratio<0.92?'cheap vs fair':(ratio<=1.15?'a fair price':'rich — overpaying');
+      let priceClass = ratio<0.92?'go':(ratio<=1.15?'wait':'skip');
+      let vp,vt;
+      const v=d[DIR].verdict;
+      const overBudget = risk>FIT_CAP;
+      if(v==='skip'||v==='mute'){ vp=v==='mute'?'mute':'skip';
+        vt=`Price is <b>${priceWord}</b> — but the <b>${DIR} setup's a ${d[DIR].vlabel.toLowerCase()}</b> right now, so the price doesn't rescue it.`;
+      } else if(ratio>1.15){ vp='skip'; vt=`At $${P.toFixed(2)} you're <b>overpaying</b> (fair ≈ $${fair.toFixed(2)}). Don't chase a rich premium.`;
+      } else if(overBudget){ vp='wait'; vt=`Setup's fine, but <b>$${risk.toFixed(0)} eats most of your $300</b>. Drop the strike or roll to the next expiry to size it down.`;
+      } else if(movePct>12){ vp='wait'; vt=`Needs <b>${dirWord} ${movePct.toFixed(1)}%</b> just to break even by expiry — a big ask. ${priceWord}, but a long reach. Tighten the strike or wait.`;
+      } else { vp=priceClass==='go'?'go':'wait';
+        vt=`<b>${priceClass==='go'?'Looks reasonable':'Workable'}:</b> ${priceWord} (fair ≈ $${fair.toFixed(2)}), needs ${dirWord} ${movePct.toFixed(1)}% to break even, risk $${risk.toFixed(0)} of your $300. Confirm the trigger in the "why" first.`; }
+      res.innerHTML=`<div class="stats">
+          <div class="s"><b>$${be.toFixed(2)}</b><span>Breakeven</span></div>
+          <div class="s"><b>${dirWord} ${movePct.toFixed(1)}%</b><span>Move needed</span></div>
+          <div class="s"><b>$${risk.toFixed(0)}</b><span>Max risk</span></div>
+          <div class="s"><b>$${fair.toFixed(2)}</b><span>Fair ≈</span></div>
+        </div><div class="vline"><i class="pip ${vp}"></i><div>${vt}</div></div>`;
+      res.classList.add('show');
+    }
+    [kEl,eEl,pEl].forEach(el=>el.addEventListener('input',analyze));
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{const open=btn.getAttribute('aria-expanded')==='true';const body=btn.nextElementSibling;
+      btn.setAttribute('aria-expanded',String(!open));body.style.maxHeight=open?'0':(body.firstElementChild.scrollHeight+8)+'px';});
+  });
+  document.querySelectorAll('.chart-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const open=btn.getAttribute('aria-expanded')==='true', body=btn.nextElementSibling;
+      btn.setAttribute('aria-expanded',String(!open));
+      body.classList.toggle('open',!open);
+      if(!open && !btn.dataset.loaded){
+        btn.dataset.loaded='1';
+        const sym=btn.dataset.sym, cont=body.querySelector('.tv');
+        if(window.TradingView && cont){
+          new TradingView.widget({container_id:cont.id, symbol:(TV[sym]||sym), interval:'D', timezone:'Etc/UTC', theme:'dark', style:'1', locale:'en', autosize:true, hide_side_toolbar:true, allow_symbol_change:false, save_image:false, backgroundColor:'#0D0C0A', toolbar_bg:'#0D0C0A'});
+        } else if(cont){
+          cont.innerHTML='<div style="padding:20px;font-size:12px;color:#9C9488">Chart couldn\u2019t load — <a href="https://www.tradingview.com/chart/?symbol='+(TV[sym]||sym)+'" target="_blank" style="color:#D4AF6B">open in TradingView ↗</a></div>';
+        }
+      }
+    });
+  });
+}
+
+function setDir(dir){
+  DIR=dir;
+  document.getElementById('toggle').classList.toggle('puts',dir==='put');
+  document.querySelectorAll('#toggle button').forEach(b=>b.classList.toggle('on',b.dataset.dir===dir));
+  document.getElementById('readlab').textContent=READS[dir][0];
+  document.getElementById('readtxt').innerHTML=READS[dir][1];
+  document.getElementById('seclabel').textContent=(dir==='call'?'Long ideas':'Short ideas')+' · your 5 names';
+  build();
+}
+document.querySelectorAll('#toggle button').forEach(b=>b.addEventListener('click',()=>setDir(b.dataset.dir)));
+
+fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error('bad status'); return r.json(); }).then(p=>{
+  document.getElementById('asof').textContent='as of '+fmtD(p.updated)+' · daily auto-refresh';
+  const ad=document.getElementById('andate'); if(ad&&p.analysis_date) ad.textContent='analysis refreshed '+fmtD(p.analysis_date);
+  NAMES=p.names;
+  setDir('call');
+}).catch(e=>{
+  document.getElementById('asof').textContent='couldn\u2019t load data — refresh';
+  document.getElementById('err').classList.add('show');
+});
+</script>
+</body>
+</html>
