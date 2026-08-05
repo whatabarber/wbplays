@@ -1,144 +1,284 @@
 {
-  "updated": "2026-07-22",
+  "updated": "2026-08-05",
   "analysis_date": "2026-07-22",
   "names": [
     {
       "sym": "SPY",
       "co": "S&P 500 ETF",
-      "spot": 748.28,
-      "price": "$748.28",
-      "chg": "+2.1% \u00b7 1mo",
+      "spot": 771.33,
+      "price": "$771.33",
+      "chg": "+2.7% \u00b7 1mo",
       "dir": "up",
-      "levels": [["Support", "$744"], ["Resistance", "$753"], ["Range", "78% of 52wk"]],
-      "ivNear": 0.13,
-      "ivFar": 0.145,
+      "levels": [
+        [
+          "Support",
+          "$744"
+        ],
+        [
+          "Resistance",
+          "$753"
+        ],
+        [
+          "Range",
+          "99% of 52wk"
+        ]
+      ],
+      "ivNear": 0.068,
+      "ivFar": 0.137,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Trend", "Broad market still in an uptrend, but sitting mid-range between $744 support and $753 resistance \u2014 not a clean breakout trigger yet."],
-          ["Trigger", "Wait for a close above $750 on volume before paying up for calls."],
-          ["Watch", "Fed commentary and rate-hike odds have been moving the tape day to day \u2014 headline risk cuts both ways."]
+          [
+            "Trend",
+            "Broad market still in an uptrend, but sitting mid-range between $744 support and $753 resistance \u2014 not a clean breakout trigger yet."
+          ],
+          [
+            "Trigger",
+            "Wait for a close above $750 on volume before paying up for calls."
+          ],
+          [
+            "Watch",
+            "Fed commentary and rate-hike odds have been moving the tape day to day \u2014 headline risk cuts both ways."
+          ]
         ]
       },
       "put": {
         "verdict": "skip",
         "vlabel": "Skip",
         "why": [
-          ["Trend", "Index is still trending up \u2014 fading strength here is fighting the tape, not trading with it."],
-          ["Trigger", "Only worth a look if $744 support cracks on real volume, not just a wick."]
+          [
+            "Trend",
+            "Index is still trending up \u2014 fading strength here is fighting the tape, not trading with it."
+          ],
+          [
+            "Trigger",
+            "Only worth a look if $744 support cracks on real volume, not just a wick."
+          ]
         ]
       }
     },
     {
       "sym": "TSLA",
       "co": "Tesla, Inc.",
-      "spot": 357.0,
-      "price": "$357.00",
-      "chg": "-5.8% \u00b7 1mo",
+      "spot": 327.35,
+      "price": "$327.35",
+      "chg": "-22.0% \u00b7 1mo",
       "dir": "down",
-      "levels": [["Prior close", "$376.03"], ["Support", "$350"], ["Range", "34% of 52wk"]],
-      "ivNear": 0.5,
-      "ivFar": 0.42,
+      "levels": [
+        [
+          "Prior close",
+          "$376.03"
+        ],
+        [
+          "Support",
+          "$350"
+        ],
+        [
+          "Range",
+          "15% of 52wk"
+        ]
+      ],
+      "ivNear": 0.625,
+      "ivFar": 0.493,
       "call": {
         "verdict": "skip",
         "vlabel": "Skip",
         "why": [
-          ["Catalyst", "Q2 earnings missed on EPS ($0.33 vs $0.51 est.) despite a revenue beat; auto gross margin slid and free cash flow turned negative."],
-          ["Trend", "Stock is sliding after the print \u2014 don\u2019t buy calls into a fresh earnings-miss drop."],
-          ["Watch", "Musk flagged a heavier capex cycle for the next 2-3 years on the call \u2014 that\u2019s a multi-quarter overhang, not a one-day story."]
+          [
+            "Catalyst",
+            "Q2 earnings missed on EPS ($0.33 vs $0.51 est.) despite a revenue beat; auto gross margin slid and free cash flow turned negative."
+          ],
+          [
+            "Trend",
+            "Stock is sliding after the print \u2014 don\u2019t buy calls into a fresh earnings-miss drop."
+          ],
+          [
+            "Watch",
+            "Musk flagged a heavier capex cycle for the next 2-3 years on the call \u2014 that\u2019s a multi-quarter overhang, not a one-day story."
+          ]
         ]
       },
       "put": {
         "verdict": "go",
         "vlabel": "Looks solid",
         "why": [
-          ["Catalyst", "EPS miss, margin compression, and a negative-FCF quarter give this a real fundamental reason to be weak, not just noise."],
-          ["Trigger", "Confirm a clean break of $350 support before sizing in \u2014 don\u2019t pre-chase the gap down."],
-          ["Risk", "IV is elevated post-earnings. Size small (this is a $300-per-trade watchlist) and treat $350 support as your invalidation level."]
+          [
+            "Catalyst",
+            "EPS miss, margin compression, and a negative-FCF quarter give this a real fundamental reason to be weak, not just noise."
+          ],
+          [
+            "Trigger",
+            "Confirm a clean break of $350 support before sizing in \u2014 don\u2019t pre-chase the gap down."
+          ],
+          [
+            "Risk",
+            "IV is elevated post-earnings. Size small (this is a $300-per-trade watchlist) and treat $350 support as your invalidation level."
+          ]
         ]
       }
     },
     {
       "sym": "PLTR",
       "co": "Palantir Technologies",
-      "spot": 124.57,
-      "price": "$124.57",
-      "chg": "-14.3% \u00b7 1mo",
-      "dir": "down",
-      "levels": [["Support", "$119"], ["Resistance", "$132"], ["Range", "41% of 52wk"]],
-      "ivNear": 0.58,
-      "ivFar": 0.5,
+      "spot": 162.66,
+      "price": "$162.66",
+      "chg": "+22.7% \u00b7 1mo",
+      "dir": "up",
+      "levels": [
+        [
+          "Support",
+          "$119"
+        ],
+        [
+          "Resistance",
+          "$132"
+        ],
+        [
+          "Range",
+          "56% of 52wk"
+        ]
+      ],
+      "ivNear": 0.756,
+      "ivFar": 0.566,
       "call": {
         "verdict": "skip",
         "vlabel": "Skip",
         "why": [
-          ["Momentum", "Down sharply this week on UK NHS-contract regulatory scrutiny, a new open-source rival, and valuation anxiety (still ~90x forward earnings)."],
-          ["Catalyst", "Q2 earnings land Aug 3 \u2014 that\u2019s the next real inflection point, not this week\u2019s drift."],
-          ["Trigger", "Let it find a floor first; wait for a higher-low before considering calls again."]
+          [
+            "Momentum",
+            "Down sharply this week on UK NHS-contract regulatory scrutiny, a new open-source rival, and valuation anxiety (still ~90x forward earnings)."
+          ],
+          [
+            "Catalyst",
+            "Q2 earnings land Aug 3 \u2014 that\u2019s the next real inflection point, not this week\u2019s drift."
+          ],
+          [
+            "Trigger",
+            "Let it find a floor first; wait for a higher-low before considering calls again."
+          ]
         ]
       },
       "put": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Momentum", "Already extended to the downside \u2014 chasing more short here risks a snapback bounce."],
-          ["Trigger", "Better entry is a failed bounce back toward $130-132, not at the lows."],
-          ["Catalyst", "Earnings Aug 3 means premium will get expensive fast as that date approaches \u2014 don\u2019t hold short options through it unpriced."]
+          [
+            "Momentum",
+            "Already extended to the downside \u2014 chasing more short here risks a snapback bounce."
+          ],
+          [
+            "Trigger",
+            "Better entry is a failed bounce back toward $130-132, not at the lows."
+          ],
+          [
+            "Catalyst",
+            "Earnings Aug 3 means premium will get expensive fast as that date approaches \u2014 don\u2019t hold short options through it unpriced."
+          ]
         ]
       }
     },
     {
       "sym": "AAPL",
       "co": "Apple Inc.",
-      "spot": 325.89,
-      "price": "$325.89",
-      "chg": "-1.2% \u00b7 1mo",
+      "spot": 309.38,
+      "price": "$309.38",
+      "chg": "-1.0% \u00b7 1mo",
       "dir": "down",
-      "levels": [["Support", "$320"], ["Resistance", "$332"], ["Range", "58% of 52wk"]],
-      "ivNear": 0.27,
-      "ivFar": 0.25,
+      "levels": [
+        [
+          "Support",
+          "$320"
+        ],
+        [
+          "Resistance",
+          "$332"
+        ],
+        [
+          "Range",
+          "75% of 52wk"
+        ]
+      ],
+      "ivNear": 0.34,
+      "ivFar": 0.287,
       "call": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Trend", "Drifting in a tight range under the 50-day \u2014 no clean breakout trigger yet."],
-          ["Trigger", "A reclaim of $328-330 on volume would flip this to an actual lean."]
+          [
+            "Trend",
+            "Drifting in a tight range under the 50-day \u2014 no clean breakout trigger yet."
+          ],
+          [
+            "Trigger",
+            "A reclaim of $328-330 on volume would flip this to an actual lean."
+          ]
         ]
       },
       "put": {
         "verdict": "wait",
         "vlabel": "Wait",
         "why": [
-          ["Trend", "Mild pullback, but no breakdown \u2014 $320 support has held so far."],
-          ["Trigger", "Only worth a put if $320 gives way cleanly, not on a single red day."]
+          [
+            "Trend",
+            "Mild pullback, but no breakdown \u2014 $320 support has held so far."
+          ],
+          [
+            "Trigger",
+            "Only worth a put if $320 gives way cleanly, not on a single red day."
+          ]
         ]
       }
     },
     {
       "sym": "META",
       "co": "Meta Platforms, Inc.",
-      "spot": 645.56,
-      "price": "$645.56",
-      "chg": "+0.4% \u00b7 1mo",
-      "dir": "up",
-      "levels": [["Support", "$636"], ["Resistance", "$653"], ["Earnings", "Jul 29"]],
-      "ivNear": 0.32,
-      "ivFar": 0.3,
+      "spot": 587.94,
+      "price": "$587.94",
+      "chg": "-2.1% \u00b7 1mo",
+      "dir": "down",
+      "levels": [
+        [
+          "Support",
+          "$636"
+        ],
+        [
+          "Resistance",
+          "$653"
+        ],
+        [
+          "Earnings",
+          "Jul 29"
+        ]
+      ],
+      "ivNear": 0.52,
+      "ivFar": 0.469,
       "call": {
         "verdict": "mute",
         "vlabel": "Track only",
         "why": [
-          ["Catalyst", "Earnings land July 29 \u2014 premium already prices in a binary move, making both calls and puts expensive right now."],
-          ["Discipline", "Track it, but avoid pressing size into earnings-inflated premium. Re-evaluate after the print."]
+          [
+            "Catalyst",
+            "Earnings land July 29 \u2014 premium already prices in a binary move, making both calls and puts expensive right now."
+          ],
+          [
+            "Discipline",
+            "Track it, but avoid pressing size into earnings-inflated premium. Re-evaluate after the print."
+          ]
         ]
       },
       "put": {
         "verdict": "mute",
         "vlabel": "Track only",
         "why": [
-          ["Catalyst", "Same earnings-binary risk on the put side \u2014 a rich premium can lose value even if you\u2019re directionally right."],
-          ["Discipline", "Wait for IV to crush post-earnings, then re-assess with cheaper premium."]
+          [
+            "Catalyst",
+            "Same earnings-binary risk on the put side \u2014 a rich premium can lose value even if you\u2019re directionally right."
+          ],
+          [
+            "Discipline",
+            "Wait for IV to crush post-earnings, then re-assess with cheaper premium."
+          ]
         ]
       }
     }
