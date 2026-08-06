@@ -39,10 +39,10 @@
   .toggle .slider{position:absolute;top:4px;left:4px;width:calc(50% - 4px);height:calc(100% - 8px);background:#262119;border-radius:10px;box-shadow:var(--shadow);transition:transform .3s cubic-bezier(.4,.0,.2,1)}
   .toggle.puts .slider{transform:translateX(100%)}
 
-  .read{margin:12px 0 6px;padding:16px 18px;background:var(--paper-2);border:1px solid var(--line);border-radius:16px;position:relative;overflow:hidden}
-  .read::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--wait)}
-  .read .lab{font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--wait)}
-  .read p{font-size:14.5px;margin-top:5px;color:var(--ink)}.read b{font-weight:600}
+  .trendstrip{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 4px}
+  .tchip{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;background:var(--paper-2);border:1px solid var(--line);font-size:12px;color:var(--ink)}
+  .tchip b{font-weight:700}
+  .tchip .pip{width:7px;height:7px}
   .legend{display:flex;gap:14px;flex-wrap:wrap;margin:16px 2px 4px;font-size:11.5px;color:var(--ink-soft)}
   .legend span{display:inline-flex;align-items:center;gap:6px}
   .pip{width:9px;height:9px;border-radius:50%}
@@ -134,17 +134,17 @@
     <button data-dir="put">▼ Puts <span style="font-weight:400;color:var(--ink-soft)">· down</span></button>
   </div>
 
-  <div class="read"><span class="lab" id="readlab">This week</span><p id="readtxt"></p></div>
+  <div class="trendstrip" id="trendstrip"></div>
 
   <div class="legend">
     <span><i class="pip go"></i> Looks solid</span><span><i class="pip wait"></i> Wait / watch</span>
-    <span><i class="pip skip"></i> Skip</span><span><i class="pip mute"></i> Track only</span>
+    <span><i class="pip skip"></i> Skip</span><span><i class="pip mute"></i> Track only (earnings &lt;14d)</span>
   </div>
 
   <div class="section-label" id="seclabel">Your 5 names</div>
   <div id="cards"></div>
 
-  <footer><b>Heads up:</b> not financial advice — a research aid for your own calls. Prices + implied vol auto-refresh daily via GitHub Actions (see data.json's "updated" date above); the verdicts + "why" text carries its own "analysis refreshed" date and is written by hand, not auto-generated. The analyzer estimates fair value with Black–Scholes anchored to each name's implied vol — a guide, not gospel. <b>Calls bet up, puts bet down — same discipline both ways. Size around $300 a trade, not more.</b></footer>
+  <footer><b>Heads up:</b> not financial advice — a technical research aid for your own calls. Every number here — price, trend, support/resistance, RSI, verdicts, and the "why" text — is computed fresh from real price history each time the daily GitHub Action runs (see data.json's "updated" date above). Nothing is hand-typed. It reads technicals only: trend vs. moving averages, momentum, swing levels, and prior-day range — it has no idea about news or events beyond a confirmed earnings date. The analyzer estimates fair value with Black–Scholes anchored to each name's implied vol — a guide, not gospel. <b>Calls bet up, puts bet down — same discipline both ways. Size around $300 a trade, not more.</b></footer>
 </div>
 
 <script>
@@ -155,6 +155,23 @@ function bsCall(S,K,T,iv,r=0.04){if(T<=0||iv<=0)return Math.max(0,S-K);const v=i
 function bsPut(S,K,T,iv,r=0.04){if(T<=0||iv<=0)return Math.max(0,K-S);return bsCall(S,K,T,iv,r)-S+K*Math.exp(-r*T);}
 function bsPrice(dir,S,K,T,iv){return dir==='put'?bsPut(S,K,T,iv):bsCall(S,K,T,iv);}
 
+// ---- trend label: computed live from real trend + 1mo magnitude, not hand-written ----
+function trendLabel(d){
+  const mag = parseFloat((d.chg||'0').replace(/[^0-9.\-]/g,'')) || 0;
+  if(d.trend==='up')   return mag>=8  ? ['Strong Uptrend','go']   : ['Uptrend','go'];
+  if(d.trend==='down') return mag<=-8 ? ['Strong Downtrend','skip'] : ['Downtrend','skip'];
+  return ['Range-bound','wait'];
+}
+function buildTrendStrip(){
+  const el=document.getElementById('trendstrip');
+  if(!el) return;
+  el.innerHTML = NAMES.map(d=>{
+    const [label,cls]=trendLabel(d);
+    const arrow = d.trend==='up'?'▲':d.trend==='down'?'▼':'—';
+    return `<div class="tchip"><b>${d.sym}</b><span class="pip ${cls}"></span>${arrow} ${label}</div>`;
+  }).join('');
+}
+
 // ---- upcoming Friday expiries, computed fresh each visit ----
 function fridays(count){const out=[];const d=new Date();d.setHours(12,0,0,0);while(out.length<count){d.setDate(d.getDate()+1);if(d.getDay()===5)out.push(new Date(d));}return out;}
 function dteOf(dt){const n=new Date();n.setHours(12,0,0,0);return Math.max(1,Math.round((dt-n)/86400000));}
@@ -163,12 +180,8 @@ const FRIS=fridays(7);
 const SHORT=FRIS[0];
 let MONTHLY=FRIS[0];for(const f of FRIS){if(Math.abs(dteOf(f)-30)<Math.abs(dteOf(MONTHLY)-30))MONTHLY=f;}
 
-const BUDGET=300, FIT_CAP=315; // ~$300/trade watchlist
 
-const READS={
-  call:["This week · calls","<b>Both earnings events are behind us now, and the dust hasn't fully settled.</b> PLTR ripped ~15% on a big Aug 3 beat — impressive, but chasing a gap that large is late, not early. TSLA has clawed back off its post-earnings lows but isn't breaking out yet. META is still digesting a rough July 29 miss on free cash flow — no reversal confirmed. SPY and AAPL are the steadier names here, with SPY sitting near the top of its 52-week range."],
-  put:["This week · puts","<b>The easy directional trades already happened.</b> META's post-earnings slide is a week old — chasing more downside this late risks a dead-cat bounce. PLTR just had a huge beat, so fading it now is fighting fresh bullish momentum. TSLA's slide has stalled and stabilized — late to short it. SPY's uptrend remains intact near 52-week highs, don't fight it. AAPL's the only true coin-flip name right now."]
-};
+const BUDGET=300, FIT_CAP=315; // ~$300/trade watchlist
 
 let DIR='call', NAMES=[];
 const TV={SPY:'AMEX:SPY',TSLA:'NASDAQ:TSLA',AAPL:'NASDAQ:AAPL',PLTR:'NASDAQ:PLTR',META:'NASDAQ:META'};
@@ -285,9 +298,8 @@ function setDir(dir){
   DIR=dir;
   document.getElementById('toggle').classList.toggle('puts',dir==='put');
   document.querySelectorAll('#toggle button').forEach(b=>b.classList.toggle('on',b.dataset.dir===dir));
-  document.getElementById('readlab').textContent=READS[dir][0];
-  document.getElementById('readtxt').innerHTML=READS[dir][1];
   document.getElementById('seclabel').textContent=(dir==='call'?'Long ideas':'Short ideas')+' · your 5 names';
+  buildTrendStrip();
   build();
 }
 document.querySelectorAll('#toggle button').forEach(b=>b.addEventListener('click',()=>setDir(b.dataset.dir)));
@@ -305,8 +317,14 @@ setInterval(tickClock,1000);
 
 fetch('data.json?t='+Date.now(),{cache:'no-store'}).then(r=>{ if(!r.ok) throw new Error('bad status'); return r.json(); }).then(p=>{
   document.getElementById('asof').textContent='as of '+fmtD(p.updated)+' · daily auto-refresh';
-  const ad=document.getElementById('andate'); if(ad&&p.analysis_date) ad.textContent='analysis refreshed '+fmtD(p.analysis_date);
-  NAMES=p.names;
+  const ad=document.getElementById('andate'); if(ad&&p.analysis_date) ad.textContent='technicals + verdicts computed '+fmtD(p.analysis_date);
+  const missing = p.names.filter(n=>typeof n.spot!=='number');
+  NAMES = p.names.filter(n=>typeof n.spot==='number');
+  if(missing.length){
+    const err=document.getElementById('err');
+    err.textContent = 'Waiting on first data run for: '+missing.map(n=>n.sym).join(', ')+'. Go to Actions → Update market data → Run workflow.';
+    err.classList.add('show');
+  }
   setDir('call');
 }).catch(e=>{
   document.getElementById('asof').textContent='couldn\u2019t load data — refresh';
