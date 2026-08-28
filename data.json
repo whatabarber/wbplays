@@ -1,19 +1,19 @@
 {
-  "updated": "2026-08-27",
-  "analysis_date": "2026-08-27",
+  "updated": "2026-08-28",
+  "analysis_date": "2026-08-28",
   "names": [
     {
       "sym": "SPY",
       "co": "S&P 500 ETF",
-      "spot": 771.1,
-      "price": "$771.10",
-      "chg": "+5.7% \u00b7 1mo",
+      "spot": 769.35,
+      "price": "$769.35",
+      "chg": "+3.7% \u00b7 1mo",
       "dir": "up",
       "trend": "up",
       "levels": [
         [
           "Support",
-          "$734.59"
+          "$737.68"
         ],
         [
           "Resistance",
@@ -21,7 +21,7 @@
         ],
         [
           "Range",
-          "95% of 52wk"
+          "93% of 52wk"
         ]
       ],
       "call": {
@@ -34,11 +34,11 @@
           ],
           [
             "Momentum",
-            "RSI(14) is 59 \u2014 neutral-to-bullish momentum"
+            "RSI(14) is 57 \u2014 neutral-to-bullish momentum"
           ],
           [
             "Levels",
-            "Resistance $779.37 (1.1% away). Support $734.59. Prior day's range: $763.93\u2013$767.35."
+            "Resistance $779.37 (1.3% away). Support $737.68. Prior day's range: $767.16\u2013$772.36."
           ]
         ]
       },
@@ -52,29 +52,29 @@
           ],
           [
             "Momentum",
-            "RSI(14) is 59 \u2014 neutral-to-bullish momentum"
+            "RSI(14) is 57 \u2014 neutral-to-bullish momentum"
           ],
           [
             "Levels",
-            "Support $734.59 (4.7% away). Resistance $779.37. Prior day's range: $763.93\u2013$767.35."
+            "Support $737.68 (4.1% away). Resistance $779.37. Prior day's range: $767.16\u2013$772.36."
           ]
         ]
       },
       "ivNear": 0.0,
-      "ivFar": 0.081
+      "ivFar": 0.077
     },
     {
       "sym": "TSLA",
       "co": "Tesla, Inc.",
-      "spot": 354.81,
-      "price": "$354.81",
-      "chg": "+18.9% \u00b7 1mo",
+      "spot": 348.75,
+      "price": "$348.75",
+      "chg": "+12.9% \u00b7 1mo",
       "dir": "up",
       "trend": "down",
       "levels": [
         [
           "Support",
-          "$301.33"
+          "$301.97"
         ],
         [
           "Resistance",
@@ -82,7 +82,7 @@
         ],
         [
           "Range",
-          "29% of 52wk"
+          "26% of 52wk"
         ]
       ],
       "call": {
@@ -95,11 +95,11 @@
           ],
           [
             "Momentum",
-            "RSI(14) is 54 \u2014 neutral, no clear momentum either way"
+            "RSI(14) is 51 \u2014 neutral, no clear momentum either way"
           ],
           [
             "Levels",
-            "Resistance $366.50 (3.3% away). Support $301.33. Prior day's range: $342.53\u2013$351.93."
+            "Resistance $366.50 (5.1% away). Support $301.97. Prior day's range: $345.45\u2013$355.74."
           ]
         ]
       },
@@ -113,23 +113,23 @@
           ],
           [
             "Momentum",
-            "RSI(14) is 54 \u2014 neutral, no clear momentum either way"
+            "RSI(14) is 51 \u2014 neutral, no clear momentum either way"
           ],
           [
             "Levels",
-            "Support $301.33 (15.1% away). Resistance $366.50. Prior day's range: $342.53\u2013$351.93."
+            "Support $301.97 (13.4% away). Resistance $366.50. Prior day's range: $345.45\u2013$355.74."
           ]
         ]
       },
-      "ivNear": 0.305,
-      "ivFar": 0.387
+      "ivNear": 0.038,
+      "ivFar": 0.352
     },
     {
       "sym": "PLTR",
       "co": "Palantir Technologies",
-      "spot": 185.93,
-      "price": "$185.93",
-      "chg": "+51.2% \u00b7 1mo",
+      "spot": 186.29,
+      "price": "$186.29",
+      "chg": "+52.4% \u00b7 1mo",
       "dir": "up",
       "trend": "up",
       "levels": [
@@ -139,7 +139,7 @@
         ],
         [
           "Resistance",
-          "$182.44"
+          "$186.86"
         ],
         [
           "Range",
@@ -160,7 +160,7 @@
           ],
           [
             "Levels",
-            "Resistance $182.44 (-1.9% away). Support $119.62. Prior day's range: $168.90\u2013$178.49."
+            "Resistance $186.86 (0.3% away). Support $119.62. Prior day's range: $178.01\u2013$186.86."
           ]
         ]
       },
@@ -178,19 +178,19 @@
           ],
           [
             "Levels",
-            "Support $119.62 (35.7% away). Resistance $182.44. Prior day's range: $168.90\u2013$178.49."
+            "Support $119.62 (35.8% away). Resistance $186.86. Prior day's range: $178.01\u2013$186.86."
           ]
         ]
       },
-      "ivNear": 0.391,
-      "ivFar": 0.467
+      "ivNear": 0.07,
+      "ivFar": 0.434
     },
     {
       "sym": "AAPL",
       "co": "Apple Inc.",
-      "spot": 314.58,
-      "price": "$314.58",
-      "chg": "-6.9% \u00b7 1mo",
+      "spot": 319.7,
+      "price": "$319.70",
+      "chg": "-4.0% \u00b7 1mo",
       "dir": "down",
       "trend": "range",
       "levels": [
@@ -200,11 +200,11 @@
         ],
         [
           "Resistance",
-          "$334.46"
+          "$320.28"
         ],
         [
           "Range",
-          "75% of 52wk"
+          "79% of 52wk"
         ]
       ],
       "call": {
@@ -217,11 +217,11 @@
           ],
           [
             "Momentum",
-            "RSI(14) is 53 \u2014 neutral, no clear momentum either way"
+            "RSI(14) is 57 \u2014 neutral-to-bullish momentum"
           ],
           [
             "Levels",
-            "Resistance $334.46 (6.3% away). Support $299.74. Prior day's range: $308.80\u2013$315.43."
+            "Resistance $320.28 (0.2% away). Support $299.74. Prior day's range: $309.40\u2013$315.40."
           ]
         ]
       },
@@ -235,29 +235,29 @@
           ],
           [
             "Momentum",
-            "RSI(14) is 53 \u2014 neutral, no clear momentum either way"
+            "RSI(14) is 57 \u2014 neutral-to-bullish momentum"
           ],
           [
             "Levels",
-            "Support $299.74 (4.7% away). Resistance $334.46. Prior day's range: $308.80\u2013$315.43."
+            "Support $299.74 (6.2% away). Resistance $320.28. Prior day's range: $309.40\u2013$315.40."
           ]
         ]
       },
-      "ivNear": 0.188,
-      "ivFar": 0.231
+      "ivNear": 0.027,
+      "ivFar": 0.212
     },
     {
       "sym": "META",
       "co": "Meta Platforms, Inc.",
-      "spot": 571.1,
-      "price": "$571.10",
-      "chg": "-2.5% \u00b7 1mo",
-      "dir": "down",
+      "spot": 578.02,
+      "price": "$578.02",
+      "chg": "+7.2% \u00b7 1mo",
+      "dir": "up",
       "trend": "down",
       "levels": [
         [
           "Support",
-          "$524.49"
+          "$537.27"
         ],
         [
           "Resistance",
@@ -265,7 +265,7 @@
         ],
         [
           "Range",
-          "19% of 52wk"
+          "22% of 52wk"
         ]
       ],
       "call": {
@@ -278,11 +278,11 @@
           ],
           [
             "Momentum",
-            "RSI(14) is 47 \u2014 neutral, no clear momentum either way"
+            "RSI(14) is 50 \u2014 neutral, no clear momentum either way"
           ],
           [
             "Levels",
-            "Resistance $612.43 (7.2% away). Support $524.49. Prior day's range: $561.88\u2013$593.34."
+            "Resistance $612.43 (6.0% away). Support $537.27. Prior day's range: $567.62\u2013$588.39."
           ]
         ]
       },
@@ -296,16 +296,16 @@
           ],
           [
             "Momentum",
-            "RSI(14) is 47 \u2014 neutral, no clear momentum either way"
+            "RSI(14) is 50 \u2014 neutral, no clear momentum either way"
           ],
           [
             "Levels",
-            "Support $524.49 (8.2% away). Resistance $612.43. Prior day's range: $561.88\u2013$593.34."
+            "Support $537.27 (7.0% away). Resistance $612.43. Prior day's range: $567.62\u2013$588.39."
           ]
         ]
       },
-      "ivNear": 0.305,
-      "ivFar": 0.348
+      "ivNear": 0.061,
+      "ivFar": 0.321
     }
   ]
 }
